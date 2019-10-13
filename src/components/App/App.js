@@ -3,8 +3,6 @@ import 'normalize.css';
 import publications from '../../assets/publications.json';
 import Reader from '../Reader/Reader';
 
-function App() {
-  return <Reader items={publications} />;
-}
+const App = () => <Reader items={publications} />;
 
 export default App;
