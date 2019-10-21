@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Controls.module.css'
+import styles from './Controls.module.css';
 
-const Controls = ({ onNextPage, onPrevPage, disabledPrev, disabledNext }) => (
+const Controls = ({ onChangePage, disabledPrev, disabledNext }) => (
   <section className={styles.controls}>
     <button
       type="button"
+      name="prev"
       className={styles.button}
-      onClick={onPrevPage}
+      onClick={onChangePage}
       disabled={disabledPrev}
     >
       Назад
     </button>
     <button
       type="button"
+      name="next"
       className={styles.button}
-      onClick={onNextPage}
+      onClick={onChangePage}
       disabled={disabledNext}
     >
       Вперед
@@ -23,9 +25,8 @@ const Controls = ({ onNextPage, onPrevPage, disabledPrev, disabledNext }) => (
   </section>
 );
 
-Controls.prototype = {
-  onNextPage: PropTypes.func.isRequired,
-  onPrevPage: PropTypes.func.isRequired,
+Controls.propTypes = {
+  onChangePage: PropTypes.func.isRequired,
   disabledNext: PropTypes.bool.isRequired,
   disabledPrev: PropTypes.bool.isRequired,
 };
