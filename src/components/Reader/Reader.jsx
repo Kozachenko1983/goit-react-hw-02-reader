@@ -15,15 +15,14 @@ export default class Reader extends Component {
   };
 
   handleButtons = event => {
-    if (event.target.name === 'next') {
-      this.setState(prevState => ({
-        indexArrayPublication: prevState.indexArrayPublication + 1,
-      }));
-    } else {
-      this.setState(prevState => ({
-        indexArrayPublication: prevState.indexArrayPublication - 1,
-      }));
-    }
+    const { name } = event.target;
+
+    this.setState(prevState => ({
+      indexArrayPublication:
+        name === 'next'
+          ? prevState.indexArrayPublication + 1
+          : prevState.indexArrayPublication - 1,
+    }));
   };
 
   render() {
