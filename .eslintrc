@@ -1,4 +1,5 @@
 {
+
   "extends": [
     "eslint:recommended",
     "airbnb",
@@ -52,6 +53,7 @@
     "FormData": true,
     "FileReader": true,
     "Blob": true,
-    "navigator": true
+    "navigator": true,
+    "allowTernary": true
   }
 }

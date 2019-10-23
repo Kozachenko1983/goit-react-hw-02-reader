@@ -11,35 +11,36 @@ export default class Reader extends Component {
   };
 
   state = {
-    index: 0,
+    indexArrayPublication: 0,
   };
 
   handleButtons = event => {
     if (event.target.name === 'next') {
-      this.setState(s => ({
-        index: s.index + 1,
+      this.setState(prevState => ({
+        indexArrayPublication: prevState.indexArrayPublication + 1,
       }));
-    }
-    if (event.target.name === 'prev') {
-      this.setState(s => ({
-        index: s.index - 1,
+    } else {
+      this.setState(prevState => ({
+        indexArrayPublication: prevState.indexArrayPublication - 1,
       }));
     }
   };
 
   render() {
     const { items } = this.props;
-    const { index } = this.state;
-    const currentPage = index + 1;
+    const { indexArrayPublication } = this.state;
+    const currentPage = indexArrayPublication + 1;
+    const disabledPrev = currentPage <= 1;
+    const disabledNext = currentPage >= items.length;
     return (
       <div className={styles.reader}>
         <Controls
           onChangePage={this.handleButtons}
-          disabledPrev={!(currentPage > 1)}
-          disabledNext={!(currentPage < items.length)}
+          disabledPrev={disabledPrev}
+          disabledNext={disabledNext}
         />
         <Counter currentPage={currentPage} allPages={items.length} />
-        <Publication item={items[index]} />
+        <Publication item={items[indexArrayPublication]} />
       </div>
     );
   }
